@@ -24,6 +24,8 @@ mlflow db upgrade ${BACKEND_URI}
 
 mlflow server \
   --backend-store-uri ${BACKEND_URI} \
-  --default-artifact-root ${GCS_BACKEND} \
+  --default-artifact-root ${GCS_BACKEND} \  # Set the default artifact location for new experiments
+  --artifacts-destination ${GCS_BACKEND} \  # Set the path to record artifacts to
+  --serve-artifacts \  # Enable proxied artifact access
   --host 0.0.0.0 \
   --port ${PORT}
